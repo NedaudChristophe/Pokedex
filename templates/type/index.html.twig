@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des types de Pokemon{% endblock %}
+
+{% block body %}
+
+
+<div class="container-fluid">
+    <h1 class="mb-5 mx-5 align-middle">Cliquez sur un type pour voir tous les Pokémons de ce type </h1>
+
+    <ul class="d-flex flex-wrap justify-content-center ">
+        {% for type in typeList %}
+            <li style="list-style: none;">
+                <a class="btn btn_type d-flex align-items-center justify-content-center" style="background: #{{ type.color }}; width: 30rem; height: 10rem; color: #fcfcfe; font-family: 'Bree Serif', sans-serif; font-size: 2rem;" href="{{ path('app_show_type', {'id': type.id}) }}">{{ type.name }}</a>
+                
+            </li>
+        {% endfor %}
+    </ul>
+       
+</div>
+{% endblock %}

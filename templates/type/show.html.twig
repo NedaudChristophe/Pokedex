@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Pokémon {{ typePokemonList.name }}{% endblock %}
+
+{% block body %}
+<section>
+    <div class="row">
+        {% for pokemon in typePokemonList.pokemons %}
+        <article class="pokemon" id="{{ pokemon.name }}">
+            <a href="{{ path('app_show_pokemon', {'id': pokemon.id}) }}">
+                <img src="{{ asset('img/'~pokemon.id|e) }}.png" alt="image de {{ pokemon.name }}" >
+            </a>
+            <p class="titleCard">
+               #{{ pokemon.id}} {{ pokemon.name }}
+            </p>
+        </article>
+        {% else %}
+            <tr>
+                <td colspan="12">Pokémon non trouvé</td>
+            </tr>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

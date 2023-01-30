@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail {{ pokemon.name }}{% endblock %}
+
+{% block body %}
+<section>
+<h1>Détails de {{ pokemon.name }}</h1>
+    <div class="rowDetails">
+        <section class="imageDetails">
+            <img class="img_pokemon" src="{{ asset('img/'~pokemon.id|e) }}.png" alt="image de {{ pokemon.name }}" >
+        </section>
+        <section class="cardDetails">
+            <h3>#{{ pokemon.id }} {{ pokemon.name }}</h3>
+            <!--  -->
+            <div class="type">
+            {% for type in pokemon.types %}
+                <a  href="{{ path('app_show_type', {'id': type.id}) }}" class="btn"  style="background-color: #{{ type.color }};">{{ type.name }}</a>
+                
+            {% endfor %}
+            </div>
+            <!--  -->
+            <h4>Statistiques</h4>
+    
+            <div class="stats">
+                <p>pv</p>
+                <p>{{ pokemon.hp }}</p>
+                <progress value="{{ pokemon.hp }}" max="255">{{ pokemon.hp }}</progress>
+            </div>
+            <div class="stats">
+                <p>attaque</p>
+                <p>{{ pokemon.attack }}</p>
+                <progress value="{{ pokemon.attack }}" max="255">{{ pokemon.attack }}</progress>
+            </div>
+            <div class="stats">
+                <p>Défence</p>
+                <p>{{ pokemon.defense }}</p>
+                <progress value="{{ pokemon.defense }}" max="255">{{ pokemon.defense }}</progress>
+            </div> 
+            <div class="stats">
+                <p>Attaque Spé</p>
+                <p>{{ pokemon.speAttack }}</p>
+                <progress value="{{ pokemon.speAttack }}" max="255">{{ pokemon.speAttack }}</progress>
+            </div> 
+            <div class="stats">
+                <p>Défence Spé</p>
+                <p>{{ pokemon.speDefense }}</p>
+                <progress value="{{ pokemon.speDefense }}" max="255">{{ pokemon.speDefense }}</progress>
+            </div> 
+            <div class="stats">
+                <p>Vitesse</p>
+                <p>{{ pokemon.speed }}</p>
+                <progress value="{{ pokemon.speed }}" max="255">{{ pokemon.speed }}</progress>
+            </div> 
+        </section>
+    </div>
+        
+    </div>
+</section>
+{% endblock %}
